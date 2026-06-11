@@ -899,6 +899,92 @@ window.HTMLLabApp = (() => {
     };
   };
 
+  const initEditorTabBehavior = (inputs, onChange) => {
+    const indent = "  ";
+
+    const getLineRange = (input) => {
+      const value = input.value;
+      const selectionStart = input.selectionStart;
+      const selectionEnd = input.selectionEnd;
+      const effectiveEnd = selectionEnd > selectionStart && value[selectionEnd - 1] === "\n" ? selectionEnd - 1 : selectionEnd;
+      const start = value.lastIndexOf("\n", selectionStart - 1) + 1;
+      const nextBreak = value.indexOf("\n", effectiveEnd);
+      const end = nextBreak === -1 ? value.length : nextBreak;
+      return { end, start };
+    };
+
+    const lineStartsInRange = (value, start, end) => {
+      const starts = [start];
+      for (let index = start; index < end; index += 1) {
+        if (value[index] === "\n") starts.push(index + 1);
+      }
+      return starts;
+    };
+
+    const indentSelection = (input) => {
+      const value = input.value;
+      const selectionStart = input.selectionStart;
+      const selectionEnd = input.selectionEnd;
+
+      if (selectionStart === selectionEnd) {
+        input.setRangeText(indent, selectionStart, selectionEnd, "end");
+        return;
+      }
+
+      const range = getLineRange(input);
+      const block = value.slice(range.start, range.end);
+      const lines = block.split("\n");
+      const replacement = lines.map((line) => `${indent}${line}`).join("\n");
+      const lineStarts = lineStartsInRange(value, range.start, range.end);
+      const shiftPosition = (position) => lineStarts.reduce((next, lineStart) => (position >= lineStart ? next + indent.length : next), position);
+
+      input.setRangeText(replacement, range.start, range.end, "preserve");
+      input.setSelectionRange(shiftPosition(selectionStart), shiftPosition(selectionEnd));
+    };
+
+    const outdentSelection = (input) => {
+      const value = input.value;
+      const selectionStart = input.selectionStart;
+      const selectionEnd = input.selectionEnd;
+      const range = getLineRange(input);
+      const block = value.slice(range.start, range.end);
+      const lines = block.split("\n");
+      const removals = [];
+      let offset = range.start;
+
+      const replacement = lines
+        .map((line) => {
+          const removeCount = line.startsWith(indent) ? indent.length : line.startsWith("\t") || line.startsWith(" ") ? 1 : 0;
+          if (removeCount) removals.push({ count: removeCount, start: offset });
+          offset += line.length + 1;
+          return line.slice(removeCount);
+        })
+        .join("\n");
+
+      if (!removals.length) return;
+
+      const shiftPosition = (position) =>
+        removals.reduce((next, removal) => {
+          if (position <= removal.start) return next;
+          return next - Math.min(removal.count, position - removal.start);
+        }, position);
+
+      input.setRangeText(replacement, range.start, range.end, "preserve");
+      input.setSelectionRange(shiftPosition(selectionStart), shiftPosition(selectionEnd));
+    };
+
+    inputs.forEach((input) => {
+      input.addEventListener("keydown", (event) => {
+        if (event.defaultPrevented || event.key !== "Tab" || event.ctrlKey || event.metaKey || event.altKey) return;
+        event.preventDefault();
+        if (event.shiftKey) outdentSelection(input);
+        else indentSelection(input);
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        onChange();
+      });
+    });
+  };
+
   const initHtmlTagSuggest = (htmlInput, onChange) => {
     const wrap = getElement("htmlEditorWrap") || htmlInput.parentElement;
     if (!wrap) return null;
@@ -1646,6 +1732,7 @@ window.HTMLLabApp = (() => {
     editorTagSuggest = initHtmlTagSuggest(htmlInput, runEditorPreview);
     editorColorPicker = initCssColorPicker(cssInput, runEditorPreview);
     editorUndoHistory = initEditorUndoHistory([htmlInput, cssInput], runEditorPreview);
+    initEditorTabBehavior([htmlInput, cssInput], runEditorPreview);
     setEditorTemplate(data.editorTemplates[0].id);
     htmlInput.addEventListener("input", debouncedPreview);
     cssInput.addEventListener("input", debouncedPreview);
