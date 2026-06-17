@@ -10,6 +10,8 @@
   --primary: #f97316;
   --primary-strong: #ea580c;
   --primary-soft: #fff4ed;
+  --accent-warm: #f59e0b;
+  --accent-warm-soft: #fff7ed;
   --cyan: #0ea5b7;
   --orange: #f97316;
   --violet: #fb923c;
@@ -35,6 +37,8 @@ body.dark-mode {
   --primary: #fb923c;
   --primary-strong: #fdba74;
   --primary-soft: rgba(249, 115, 22, 0.18);
+  --accent-warm: #fbbf24;
+  --accent-warm-soft: rgba(251, 191, 36, 0.14);
   --cyan: #4dd9ed;
   --orange: #fb923c;
   --violet: #fdba74;
@@ -228,6 +232,412 @@ p {
   z-index: 1;
 }
 
+.home-learning-hero {
+  background: color-mix(in srgb, var(--surface-soft) 72%, var(--bg));
+  border-bottom: 1px solid var(--line);
+  padding: 4.8rem 0 3.7rem;
+}
+
+.home-hero-grid {
+  align-items: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+}
+
+.home-hero-copy {
+  max-width: 760px;
+  min-width: 0;
+}
+
+.home-hero-copy h1 {
+  font-size: clamp(2.25rem, 5vw, 4.1rem);
+  margin: 1rem 0 1.1rem;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.home-session-panel {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.session-visual,
+.session-card {
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.session-visual {
+  overflow: hidden;
+  padding: 0.6rem;
+}
+
+.session-visual img {
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+}
+
+.session-card {
+  padding: 1rem;
+}
+
+.session-card h2 {
+  font-size: 1.18rem;
+  margin: 0.35rem 0 0.18rem;
+}
+
+.session-card p {
+  font-size: 0.86rem;
+  margin-bottom: 0.9rem;
+}
+
+.session-progress-row,
+.session-stats {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.session-progress-row span,
+.session-stats span {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.session-progress-row strong {
+  color: var(--primary);
+}
+
+.session-progress {
+  background: var(--surface-soft);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.session-progress span {
+  background: linear-gradient(90deg, var(--primary), var(--accent-warm));
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  width: 0;
+}
+
+.session-stats {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.85rem;
+}
+
+.session-stats span {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.68rem;
+}
+
+.session-stats strong {
+  color: var(--text);
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+
+.starter-flow {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.starter-step {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-xs);
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 1rem;
+  position: relative;
+}
+
+.starter-step-number,
+.phase-icon {
+  align-items: center;
+  background: var(--primary-soft);
+  border-radius: 8px;
+  color: var(--primary);
+  display: inline-flex;
+  font-weight: 800;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.starter-step i {
+  color: var(--cyan);
+  font-size: 1.12rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.starter-step h3,
+.phase-card h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.starter-step p,
+.phase-card p {
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.phase-map {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 2rem;
+}
+
+.phase-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-xs);
+  display: grid;
+  gap: 0.72rem;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.phase-card.completed {
+  border-color: color-mix(in srgb, var(--green) 42%, var(--line));
+}
+
+.phase-card-top,
+.phase-card-bottom {
+  align-items: center;
+  display: flex;
+  gap: 0.65rem;
+  justify-content: space-between;
+}
+
+.phase-outcome {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 0.65rem;
+}
+
+.phase-outcome strong {
+  color: var(--text);
+}
+
+.phase-progress {
+  background: var(--surface-soft);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.phase-progress span {
+  background: linear-gradient(90deg, var(--primary), var(--accent-warm));
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+}
+
+.phase-card-bottom span,
+.phase-card-bottom a {
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.phase-card-bottom span {
+  color: var(--muted);
+}
+
+.phase-card-bottom a {
+  color: var(--primary);
+}
+
+.home-demo-shell {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.demo-tabs {
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.7rem;
+}
+
+.demo-tab {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  flex: 0 0 auto;
+  font-weight: 800;
+  min-height: 40px;
+  padding: 0.5rem 0.85rem;
+}
+
+.demo-tab.active,
+.demo-tab:hover,
+.demo-tab:focus {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.demo-workbench {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.82fr);
+  padding: 1rem;
+}
+
+#homeDemoCode {
+  display: flex;
+  min-width: 0;
+}
+
+#homeDemoCode .code-card {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.demo-preview-panel {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#homeDemoPreview {
+  background: #fff;
+  border: 0;
+  display: block;
+  min-height: 260px;
+  width: 100%;
+}
+
+.demo-explain,
+.demo-task {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.8rem;
+}
+
+.demo-explain strong {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.demo-explain span,
+.demo-task span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.demo-task {
+  align-items: start;
+  background: color-mix(in srgb, var(--green) 8%, var(--surface));
+  display: flex;
+  gap: 0.55rem;
+}
+
+.demo-task i {
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.roadmap-guide {
+  align-items: start;
+  background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--primary) 6%, var(--surface)));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
+  padding: 1.15rem;
+}
+
+.roadmap-guide h2 {
+  font-size: 1.55rem;
+  margin: 0.55rem 0 0.45rem;
+}
+
+.roadmap-guide p {
+  margin: 0;
+}
+
+.roadmap-guide-list {
+  counter-reset: roadmap-guide;
+  display: grid;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.roadmap-guide-list li {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  counter-increment: roadmap-guide;
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.68rem;
+}
+
+.roadmap-guide-list li::before {
+  align-items: center;
+  background: var(--primary);
+  border-radius: 50%;
+  color: #fff;
+  content: counter(roadmap-guide);
+  display: flex;
+  flex: 0 0 28px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+.roadmap-guide-list span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
 .page-hero {
   background:
     radial-gradient(circle at 82% 12%, rgba(119, 123, 180, 0.15), transparent 28%),
@@ -350,7 +760,7 @@ p {
 }
 
 .hero-stats span::before {
-  background: linear-gradient(180deg, var(--primary), var(--cyan));
+  background: linear-gradient(180deg, var(--primary), var(--accent-warm));
   border-radius: 99px;
   content: "";
   height: 24px;
@@ -675,6 +1085,46 @@ p {
   margin: 0;
 }
 
+.lesson-stage {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 0.7rem;
+  max-width: calc(100% - 28px);
+  overflow-wrap: anywhere;
+  padding: 0.25rem 0.5rem;
+}
+
+.lesson-card-summary {
+  min-height: 58px;
+}
+
+.lesson-card-footer {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+}
+
+.lesson-card-footer span {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 0.35rem;
+}
+
+.lesson-card-footer i {
+  color: var(--primary);
+}
+
 .lesson-card .complete-mark {
   color: var(--green);
   font-size: 1rem;
@@ -709,6 +1159,85 @@ p {
   padding: 1.25rem;
 }
 
+.lesson-nav {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.lesson-nav-bottom {
+  margin-top: 1.25rem;
+}
+
+.lesson-nav-link {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  min-height: 74px;
+  min-width: 0;
+  padding: 0.78rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.lesson-nav-link:hover,
+.lesson-nav-link:focus {
+  border-color: color-mix(in srgb, var(--primary) 38%, var(--line));
+  box-shadow: var(--shadow-xs);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.lesson-nav-link i {
+  align-items: center;
+  background: var(--primary-soft);
+  border-radius: 8px;
+  color: var(--primary);
+  display: inline-flex;
+  flex: 0 0 34px;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.lesson-nav-link span {
+  display: grid;
+  min-width: 0;
+}
+
+.lesson-nav-link small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lesson-nav-link strong {
+  color: var(--text);
+  display: block;
+  font-size: 0.86rem;
+  line-height: 1.28;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.lesson-nav-prev {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.lesson-nav-next {
+  justify-content: flex-end;
+  text-align: right;
+}
+
 .detail-block {
   border-bottom: 1px solid var(--line);
   padding: 1.3rem 0;
@@ -718,7 +1247,7 @@ p {
   padding-top: 0;
 }
 
-.detail-block:last-child {
+.detail-block:last-of-type {
   border-bottom: 0;
 }
 
@@ -760,7 +1289,7 @@ p {
 }
 
 .beginner-start-block {
-  background: linear-gradient(135deg, var(--primary-soft), color-mix(in srgb, var(--cyan) 8%, var(--surface)));
+  background: linear-gradient(135deg, var(--primary-soft), color-mix(in srgb, var(--accent-warm) 10%, var(--surface)));
   border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--line));
   border-radius: 8px;
   margin-bottom: 0.55rem;
@@ -832,6 +1361,53 @@ p {
 .beginner-steps span {
   color: var(--muted);
   font-size: 0.8rem;
+}
+
+.learning-loop-block {
+  background: color-mix(in srgb, var(--accent-warm) 7%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent-warm) 24%, var(--line));
+  border-radius: 8px;
+  margin: 1rem 0;
+  padding: 1rem !important;
+}
+
+.learning-loop-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.learning-loop-grid article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+  padding: 0.8rem;
+}
+
+.learning-loop-grid span {
+  align-items: center;
+  background: var(--primary);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 800;
+  height: 26px;
+  justify-content: center;
+  width: 26px;
+}
+
+.learning-loop-grid strong {
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+.learning-loop-grid p {
+  font-size: 0.75rem;
+  margin: 0;
 }
 
 .term-grid {
@@ -974,11 +1550,34 @@ p {
   color: #7c8da8;
 }
 
+.mini-guidance {
+  font-size: 0.84rem;
+  margin-bottom: 0.75rem;
+}
+
+.code-bridge-grid {
+  align-items: stretch;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.88fr);
+}
+
+.bridge-label {
+  align-items: center;
+  color: var(--primary);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 800;
+  gap: 0.42rem;
+  margin-bottom: 0.5rem;
+}
+
 .lesson-code-preview {
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 8px;
-  margin-top: 0.85rem;
+  height: calc(100% - 1.7rem);
+  margin-top: 0;
   overflow: hidden;
 }
 
@@ -1877,7 +2476,7 @@ p {
 }
 
 .example-progress-line span {
-  background: linear-gradient(90deg, #f97316, #0e9aaa);
+  background: linear-gradient(90deg, #f97316, #f59e0b);
   border-radius: inherit;
   display: block;
   height: 100%;
@@ -2041,7 +2640,7 @@ p {
 }
 
 .app-progress .progress-bar {
-  background: linear-gradient(90deg, var(--primary), var(--cyan));
+  background: linear-gradient(90deg, var(--primary), var(--accent-warm));
   border-radius: 999px;
 }
 
@@ -2196,6 +2795,19 @@ body.dark-mode .btn-close {
     font-size: 2.65rem;
   }
 
+  .home-hero-grid,
+  .demo-workbench,
+  .roadmap-guide,
+  .code-bridge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .starter-flow,
+  .phase-map,
+  .learning-loop-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .challenge-layout {
     grid-template-columns: 1fr;
   }
@@ -2236,6 +2848,25 @@ body.dark-mode .btn-close {
     font-size: 2rem;
   }
 
+  .home-learning-hero {
+    padding: 3.7rem 0 3rem;
+  }
+
+  .home-hero-copy h1 {
+    font-size: 2.35rem;
+  }
+
+  .session-stats,
+  .starter-flow,
+  .phase-map,
+  .learning-loop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-guide {
+    padding: 1rem;
+  }
+
   .hero-visual img {
     height: 320px;
   }
@@ -2255,6 +2886,31 @@ body.dark-mode .btn-close {
   .debug-navigation .mini-label {
     flex-basis: 100%;
     order: -1;
+  }
+
+  .lesson-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-card-summary {
+    min-height: 0;
+  }
+
+  .lesson-nav-link {
+    min-height: 68px;
+  }
+
+  .lesson-nav-next {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .lesson-nav-next span {
+    order: 2;
+  }
+
+  .lesson-nav-next i {
+    order: 1;
   }
 }
 
@@ -2337,6 +2993,59 @@ body.dark-mode .btn-close {
 
   .hero-section {
     padding: 3.8rem 0 3.5rem;
+  }
+
+  .home-learning-hero .container,
+  .home-hero-grid {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .home-learning-hero {
+    overflow: hidden;
+  }
+
+  .home-hero-grid > *,
+  .home-session-panel,
+  .session-visual,
+  .session-card,
+  .home-demo-shell,
+  .demo-preview-panel {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .session-visual img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  .home-hero-copy h1 {
+    font-size: 1.78rem;
+    line-height: 1.18;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .home-hero-actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .session-card,
+  .starter-step,
+  .phase-card,
+  .roadmap-guide {
+    padding: 0.85rem;
+  }
+
+  .demo-workbench {
+    padding: 0.7rem;
+  }
+
+  #homeDemoPreview {
+    min-height: 220px;
   }
 
   .hero-section .container,
@@ -2456,9 +3165,9 @@ body.dark-mode .btn-close {
   }
 }
 
-/* Visual alignment with the referenced Belajar Laravel interface. */
+/* Visual alignment refinements. */
 .path-card {
-  border-radius: 18px;
+  border-radius: 8px;
 }
 
 .feature-icon,
@@ -2482,7 +3191,7 @@ body.dark-mode .btn-close {
 }
 
 .lesson-detail-card {
-  border-radius: 26px;
+  border-radius: 8px;
 }
 
 .beginner-start-block {
@@ -2493,6 +3202,7 @@ body.dark-mode .btn-close {
 .beginner-steps li,
 .term-card,
 .checkpoint-box,
+.lesson-nav-link,
 .next-learning-panel,
 .badge-item {
   border-radius: 13px;
@@ -2516,7 +3226,7 @@ body.dark-mode .btn-close {
 }
 
 .example-progress-line span {
-  background: linear-gradient(90deg, #f97316, #0ea5b7);
+  background: linear-gradient(90deg, #f97316, #f59e0b);
 }
 
 .hero-visual,

@@ -1438,6 +1438,118 @@ nav {
     { id: "konsisten", title: "Konsisten", icon: "bi-lightning-charge" }
   ];
 
+  const learningPhases = [
+    {
+      id: "orientasi",
+      icon: "bi-compass",
+      label: "Materi 01-03",
+      title: "Kenali Dunia Web",
+      description: "Pahami apa itu website, folder project, dan struktur dasar HTML sebelum menghafal tag.",
+      outcome: "Kamu tahu file mana yang dibuka, bagian mana yang terlihat, dan kenapa browser bisa membaca HTML.",
+      lessonStart: 0,
+      lessonEnd: 2
+    },
+    {
+      id: "isi-halaman",
+      icon: "bi-card-text",
+      label: "Materi 04-09",
+      title: "Isi Halaman",
+      description: "Latih teks, link, gambar, list, tabel, dan form sebagai bahan utama halaman web.",
+      outcome: "Kamu bisa membuat halaman sederhana yang punya isi, arah navigasi, media, dan input.",
+      lessonStart: 3,
+      lessonEnd: 8
+    },
+    {
+      id: "struktur-rapi",
+      icon: "bi-layout-text-window",
+      label: "Materi 10-15",
+      title: "Struktur yang Rapi",
+      description: "Belajar semantic HTML, class, id, box model, flexbox, dan responsive dasar secara pelan.",
+      outcome: "Kamu mulai bisa membaca halaman sebagai kumpulan bagian yang punya nama dan peran.",
+      lessonStart: 9,
+      lessonEnd: 14
+    },
+    {
+      id: "siap-publish",
+      icon: "bi-rocket-takeoff",
+      label: "Materi 16-20",
+      title: "Latihan Nyata",
+      description: "Gabungkan banyak halaman, media embed, aksesibilitas, debugging, dan publish.",
+      outcome: "Kamu punya bekal untuk membuat project kecil dan memperbaiki kesalahan umum sendiri.",
+      lessonStart: 15,
+      lessonEnd: 19
+    }
+  ];
+
+  const starterFlow = [
+    {
+      icon: "bi-eye",
+      title: "Lihat hasil dulu",
+      description: "Pemula lebih cepat paham saat melihat kode kecil berubah menjadi tampilan browser."
+    },
+    {
+      icon: "bi-pencil-square",
+      title: "Tiru satu contoh",
+      description: "Salin contoh, ubah teksnya, lalu amati bagian mana yang berubah."
+    },
+    {
+      icon: "bi-patch-question",
+      title: "Cek paham",
+      description: "Jawab quiz singkat dan recall dengan bahasa sendiri, bukan dengan hafalan."
+    },
+    {
+      icon: "bi-bug",
+      title: "Baca kesalahan",
+      description: "Latih mata untuk menemukan typo tag, atribut salah, atau struktur yang belum rapi."
+    }
+  ];
+
+  const homeDemos = [
+    {
+      id: "teks",
+      label: "Teks",
+      title: "Judul dan paragraf",
+      code: `<h1>Profil Rina</h1>
+<p>Saya sedang belajar membuat website pertama.</p>`,
+      explanation: "h1 dipakai untuk judul utama. p dipakai untuk kalimat penjelas.",
+      task: "Ganti nama dan kalimatnya dengan versimu sendiri."
+    },
+    {
+      id: "link",
+      label: "Link",
+      title: "Pintu ke halaman lain",
+      code: `<h1>Website Saya</h1>
+<a href="kontak.html">Buka halaman kontak</a>`,
+      explanation: "a membuat link. href berisi alamat tujuan yang akan dibuka browser.",
+      task: "Ubah tujuan href ke nama file halaman yang ingin kamu buat."
+    },
+    {
+      id: "list",
+      label: "List",
+      title: "Daftar langkah belajar",
+      code: `<h1>Rencana Hari Ini</h1>
+<ol>
+  <li>Buka materi pertama</li>
+  <li>Tiru contoh kode</li>
+  <li>Jalankan di editor</li>
+</ol>`,
+      explanation: "ol dipakai untuk daftar yang urutannya penting. Setiap item ditulis dengan li.",
+      task: "Tulis tiga langkah belajar versimu."
+    },
+    {
+      id: "form",
+      label: "Form",
+      title: "Kotak isian sederhana",
+      code: `<form>
+  <label for="nama">Nama</label>
+  <input id="nama" type="text">
+  <button type="submit">Kirim</button>
+</form>`,
+      explanation: "label menjelaskan input. Nilai for dan id harus sama agar keduanya terhubung.",
+      task: "Tambahkan satu input email dengan label yang jelas."
+    }
+  ];
+
   return {
     lessons,
     quizQuestions,
@@ -1445,6 +1557,9 @@ nav {
     debugChallenges,
     editorTemplates,
     projects,
-    badges
+    badges,
+    learningPhases,
+    starterFlow,
+    homeDemos
   };
 })();

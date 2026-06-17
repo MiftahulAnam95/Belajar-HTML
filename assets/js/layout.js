@@ -71,7 +71,7 @@ window.HTMLLabLayout = (() => {
         <div class="container">
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-2">
             <span>HTML Beginner Lab - project belajar HTML interaktif.</span>
-            <span>Style belajar terinspirasi dari <a href="https://miftahulanam95.github.io/Belajar-Laravel/" target="_blank" rel="noopener noreferrer">Belajar Laravel</a></span>
+            <span>Dibuat untuk membantu pemula memahami HTML langkah demi langkah.</span>
           </div>
         </div>
       </footer>`;
